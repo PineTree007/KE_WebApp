@@ -14,10 +14,45 @@ def home():
 
 @app.route('/propertyRecommender', methods=['POST'])
 def predict():
+    BuyOrRent = request.form.get('BuyOrRent')
+    InvestmentOrLiveIn = request.form.get('InvestmentOrLiveIn')
+    FrequencyOfTravel = request.form.get('FrequencyOfTravel')
+    priceRange = request.form.get('PriceRange')
+    bedrooms = request.form.get('bedrooms')
+    Area = request.form.get('area')
+    # smallSpace = request.form.get('smallSpace')
+    # expenseRatio = request.form.get('expenseRatio')
+    # savingsRatio = request.form.get('savingsRatio')
+    Family = request.form.get('family')
+    downtown = request.form.get('downtown')
+    Social = request.form.get('social')
+    daily = request.form.get('daily')
+
+    print(BuyOrRent)
+    print(InvestmentOrLiveIn)
+    print(FrequencyOfTravel)
+    print(priceRange)
+    print(bedrooms)
+    print(Area)
+    print(Family)
+    print(downtown)
+    print(Social)
+    print(daily)
+
+
     engine.reset()
     engine.get_rules()
-    fromForm = request.form.get('BuyOrRent')
-    engine.declare(Property(input='Buy, 4, 3, 1, NoDowntown'))
+    engine.declare(
+    Property(buyOrRent=BuyOrRent),
+    Property(InvestOrLivein=InvestmentOrLiveIn),
+    Property(frequencyOfTravel=FrequencyOfTravel),
+    Property(PriceRange=priceRange),
+    Property(bedroom=bedrooms),
+    Property(area=Area), 
+    Property(family=Family), 
+    Property(location=downtown),
+    Property(social=Social),
+    Property(dailyCommute=daily))
     engine.run()
     result=""
     with open('./res.txt') as f:
