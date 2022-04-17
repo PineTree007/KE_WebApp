@@ -20,26 +20,11 @@ def predict():
     priceRange = request.form.get('PriceRange')
     bedrooms = request.form.get('bedrooms')
     Area = request.form.get('area')
-    # smallSpace = request.form.get('smallSpace')
-    # expenseRatio = request.form.get('expenseRatio')
-    # savingsRatio = request.form.get('savingsRatio')
+    highRise = request.form.get('high')
     Family = request.form.get('family')
     downtown = request.form.get('downtown')
     Social = request.form.get('social')
     daily = request.form.get('daily')
-
-    print(BuyOrRent)
-    print(InvestmentOrLiveIn)
-    print(FrequencyOfTravel)
-    print(priceRange)
-    print(bedrooms)
-    print(Area)
-    print(Family)
-    print(downtown)
-    print(Social)
-    print(daily)
-
-
     engine.reset()
     engine.get_rules()
     engine.declare(
@@ -49,6 +34,7 @@ def predict():
     Property(PriceRange=priceRange),
     Property(bedroom=bedrooms),
     Property(area=Area), 
+    Property(high=highRise),
     Property(family=Family), 
     Property(location=downtown),
     Property(social=Social),
@@ -57,7 +43,9 @@ def predict():
     result=""
     with open('./res.txt') as f:
         result = f.readlines()
-    return render_template('results.html', resultVal=result[0])
-
+    if len(result)!=0:
+        return render_template('results.html', resultVal=result, resLen=len(result))
+    else:
+        return render_template('results.html', resultVal="No properties match your selections!", resLen=1)
 if __name__ == '__main__':
     app.run()

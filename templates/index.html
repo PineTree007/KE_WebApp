@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fish!!</title>
+    <title>Property Recommender!!</title>
+    <link rel="stylesheet" href="/static/css/main.css"/>
+    <h1>Real Estate Expert System</h1>
 </head>
 <body>
     <form action="/propertyRecommender" method="POST">
@@ -32,7 +34,7 @@
         <input type="radio" name="PriceRange" value="priceLow" for="PriceRange">
         <label for="priceLow">Low</label><br>
         <input type="radio" name="PriceRange" value="priceMedium" for="PriceRange">
-        <label for="priceMedium">Medium</label><br>
+        <label for="priceMedium">Moderate</label><br>
         <input type="radio" name="PriceRange" value="priceHigh" for="PriceRange">
         <label for="priceHigh">High</label><br>
 
@@ -60,11 +62,11 @@
         <label for="area5">&gt;2000</label><br>
 
 
-        <!-- <p>Do you prefer small space living concept?</p>
-        <input type="radio" name="smallSpace" value="smallYes" for="smallSpace">
-        <label for="smallYes">Yes</label><br>
-        <input type="radio" name="smallSpace" value="smallNo" for="smallSpace">
-        <label for="smallNo">No</label><br> -->
+        <p>Do you prefer living in high-rise buildings?</p>
+        <input type="radio" name="high" value="highYes" for="high">
+        <label for="highYes">Yes</label><br>
+        <input type="radio" name="high" value="highNo" for="high">
+        <label for="highNo">No</label><br>
 
         <!-- <p>Your Expense vs Income ratio</p>
         <input type="radio" name="expenseRatio" value="expenseHigh" for="expenseRatio">
